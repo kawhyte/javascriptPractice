@@ -100,47 +100,109 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
- //const filtered;
+    //const filtered;
+    console.log("Filter the list of inventors for those who were born in the 1500's")
+    const filtered = inventors.filter((inventor) => {
+      if (inventor.year > 1499 && inventor.year < 1600) {
+        return true;
+      }
+    })
 
-const filtered =  inventors.filter((inventor)=>{
-if (inventor.year > 1499 && inventor.year < 1600){
+    console.table(filtered);
 
-  return true;
-}
-})
-
- console.table(filtered);
-
+    console.log("Give us an array of the inventors' first and last names")
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
 
-const fullName =  inventors.map((names)=>{
- return `${names.first} ${names.last}`
+    const fullName = inventors.map((names) => {
+      return `${names.first} ${names.last}`
 
-})
+    })
 
-console.table(fullName)
+    console.table(fullName)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    console.log("Sort the inventors by birthdate, oldest to youngest")
+    let ordered = '';
+
+    ordered = inventors.sort((a, b) => {
+      return a.year - b.year
+
+    })
+
+    console.table(ordered)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+    console.log("Sort the inventors by years lived")
+
+    const total = inventors.reduce((accumulator, currentValue) => {
+      let years = currentValue.passed - currentValue.year
+
+      return accumulator = years + accumulator
+
+
+    }, 0)
+
+    console.log(`All the inventors lived ${total} years`)
+
     // 5. Sort the inventors by years lived
+
+
+    //console.log("Sort the inventors by years lived");
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // console.log("Create a list of Boulevards in Paris that contain 'de' anywhere in the name");
 
+
+    // const  category = document.querySelector('.mw-category')
+
+    // const link  = [category.querySelectorAll('a')]
+    //  const de = links.map((link)=> {
+    // return link.textContent
+
+    //  })
+    // console.log( link)
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    console.log("Sort the people alphabetically by last name");
+    const alphabetically = people.sort((a, b) => {
+      //const parts = a.split(', ')
+      const [lastA, firstA] = a.split(', ')
+      const [lastB, firstB] = b.split(', ')
+      return lastB - lastA
+
+      //console.log(last, first)
+      //console.log(` This is  A - ${a}`)
+      //console.log(` This is  B - ${b}`)
+
+
+    })
+
+    console.table(alphabetically);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+
+    console.log("Sum up the instances of each of these");
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car',
       'truck'
     ];
+
+    const vehicleCount = data.reduce((accumulator, currentValue) => {
+      if (!accumulator[currentValue]) {
+        accumulator[currentValue] = 0;
+      }
+      accumulator[currentValue]++
+      return accumulator;
+    }, {})
+
+    console.table(vehicleCount)
   </script>
 </body>
 
