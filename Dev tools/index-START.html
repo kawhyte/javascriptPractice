@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{
+      name: 'Snickers',
+      age: 2
+    }, {
+      name: 'hugo',
+      age: 8
+    }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -18,29 +26,50 @@
     }
 
     // Regular
+    console.log('HI');
 
     // Interpolated
 
+    console.log('hello I am %s ', 'Kenny')
+    let name = 'Hulk'
+    console.log(`hello I am ${name}`)
+
     // Styled
-
+    console.log('%c hello I am TEST', 'font-size:20px; background:pink')
     // warning!
-
+    console.warn('WOW')
     // Error :|
-
+    console.error('WOW')
     // Info
-
+    console.info('WOW is over used')
     // Testing
-
+    //console.assert()
     // clearing
-
+    //console.clear()
     // Viewing DOM Elements
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(dog.name)
+      console.log(dog.age)
+      console.groupEnd(`${dog.name}`)
 
+    })
     // counting
-
+    console.count("test")
+    console.count("test")
+    console.count("george")
+    console.count("test")
     // timing
-
+    console.time('DATA TIME')
+    fetch('https://api.github.com/users/kawhyte')
+    .then(data => data.json())
+    .then(data => {
+          console.log(data);
+          console.timeEnd('DATA TIME')
+        });
   </script>
 </body>
+
 </html>
